@@ -8,6 +8,10 @@
     <artifactId>liebrelib-desktop</artifactId>
     <version>0.1</version>
 
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
 
     <repositories>
         <repository>
@@ -18,9 +22,15 @@
 
     <dependencies>
         <dependency>
-            <groupId>koles.private</groupId>
+            <groupId>koles.Private</groupId>
             <artifactId>liebrelib</artifactId>
             <version>0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
