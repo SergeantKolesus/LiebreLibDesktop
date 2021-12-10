@@ -18,6 +18,7 @@ public class LiebreLibMainForm {
     private JLabel tagsLabel;
     private JLabel fileLabel;
     private JButton loadFileButton;
+    private JButton browseButton;
 
     public LiebreLibMainForm()
     {
@@ -76,6 +77,15 @@ public class LiebreLibMainForm {
                 }
             }
         });
+
+        browseButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                JFileChooser chooser = new JFileChooser();
+                if(chooser.showOpenDialog(frame) == 0)
+                    filepathTF.setText(chooser.getSelectedFile().getAbsolutePath());
+            }
+        });
     }
 
     //TODO: change boolean to exception
@@ -93,9 +103,11 @@ public class LiebreLibMainForm {
         return true;
     }
 
+    JFrame frame;
+
     public void Show()
     {
-        JFrame frame = new JFrame("Test");
+        frame = new JFrame("Test");
         frame.setContentPane(new LiebreLibMainForm().mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
