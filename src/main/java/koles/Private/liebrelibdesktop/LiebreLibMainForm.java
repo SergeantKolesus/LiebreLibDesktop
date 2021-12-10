@@ -1,10 +1,13 @@
 package koles.Private.liebrelibdesktop;
 
+import Koles.Private.LiebreLib.Constants;
 import Koles.Private.LiebreLib.LiebreLib;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class LiebreLibMainForm {
     LiebreLib lib;
@@ -24,6 +27,7 @@ public class LiebreLibMainForm {
                 System.out.println("Search button clicked");
 
                 String taglineTags = tagsTF.getText();
+                String[] tags;
 
                 if(taglineTags.length() > 0) {
                     System.out.println("Received following from tagline " + taglineTags);
@@ -32,6 +36,21 @@ public class LiebreLibMainForm {
                 {
                     System.out.println("Tagline is empty");
                 }
+
+                tags = taglineTags.split("\\/");
+                ArrayList<Integer> lines = lib.FindByTags(tags, false);
+
+                LiebreLibTableForm table = new LiebreLibTableForm();
+
+//                ArrayList<Integer> lines = lib.getLines(taglineTags);
+
+//                table.TempShow(new ArrayList<Integer>());
+//                ArrayList<Integer> lines = new ArrayList<Integer>();
+//                lines.add(1);
+//                lines.add(2);
+//                lines.add(3);
+                table.Show(lines, lib);
+//                table.Show(lines);
             }
         });
 
@@ -48,10 +67,12 @@ public class LiebreLibMainForm {
                 if(InitLiebreLib(filename, 0))
                 {
                     System.out.println("Lib loaded");
+                    searchButton.setEnabled(true);
                 }
                 else
                 {
                     System.out.println("Load failed");
+                    searchButton.setEnabled(false);
                 }
             }
         });
