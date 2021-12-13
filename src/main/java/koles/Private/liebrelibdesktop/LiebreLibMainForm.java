@@ -24,27 +24,44 @@ public class LiebreLibMainForm {
     private JButton browseButton;
     private JScrollPane tagsScrollPane;
     private JTable table1;
+    private JButton selectAllTagsButton;
+    private JButton clearTagsButton;
 
     private void SearchButtonClicked(ActionEvent event)
     {
         System.out.println("Search button clicked");
 
         String taglineTags = tagsTF.getText();
-        String[] tags;
+        String[] tags = new String[0];
+        ArrayList<String> tagsList = new ArrayList<String>();
+        CheckboxedTableModel model = (CheckboxedTableModel)table1.getModel();
 
-        if(taglineTags.length() > 0) {
-            System.out.println("Received following from tagline " + taglineTags);
+        for(int i = 0; i < lib.getTags().length; i++)
+        {
+            if((boolean)model.getValueAt(i, 1))
+            {
+                tagsList.add((String)model.getValueAt(i, 0));
+            }
+        }
+
+//        if(taglineTags.length() > 0) {
+//            System.out.println("Received following from tagline " + taglineTags);
+//        }
+        if(tagsList.size() > 0)
+        {
+//            tags = taglineTags.split("\\/");
+            tags = tagsList.toArray(tags);
+            ArrayList<Integer> lines = lib.FindByTags(tags, false);
+
+            LiebreLibTableForm table = new LiebreLibTableForm();
+            table.Show(lines, lib);
         }
         else
         {
             System.out.println("Tagline is empty");
         }
 
-        tags = taglineTags.split("\\/");
-        ArrayList<Integer> lines = lib.FindByTags(tags, false);
 
-        LiebreLibTableForm table = new LiebreLibTableForm();
-        table.Show(lines, lib);
     }
 
     private void LoadButtonClicked(ActionEvent event)
@@ -74,7 +91,7 @@ public class LiebreLibMainForm {
             for(int i = 0; i < tags.length; i++)
             {
                 cells[i][0] = tags[i];
-                cells[i][1] = Boolean.TRUE && (i % 2 == 0);
+                cells[i][1] = Boolean.FALSE;
             }
 
             String[] header = new String[] {"Тег", "Искать"};

@@ -50,4 +50,10 @@ public class CheckboxedTableModel extends AbstractTableModel {
     public boolean isCellEditable(int row, int column) {
         return (column != 0);
     }
+
+//    @Override
+//    public Object getValueAt(int row, int col)
+//    {
+//        return data[row][col];
+//    }
 }

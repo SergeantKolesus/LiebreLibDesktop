@@ -28,17 +28,17 @@ public class LiebreLibTableForm {
                 {"101","Sachin","700000"}};
         String column[]={"ID","NAME","SALARY"};
         JTable jt=new JTable(data,column);
-        jt.setBounds(30,40,200,300);
+//        jt.setBounds(30,40,200,300);
         JScrollPane sp=new JScrollPane(jt);
         f.add(sp);
-        f.setSize(300,400);
+//        f.setSize(300,400);
         f.setVisible(true);
     }
 
     public void Show(ArrayList<Integer> lines, LiebreLib lib)
     {
         frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ArrayList<String[]> linesContent = new ArrayList<String[]>();
         for(int line : lines)
         {
@@ -53,7 +53,7 @@ public class LiebreLibTableForm {
         columnNames = Constants.tableColumnNames.keySet().toArray(columnNames);
 
         table = new JTable(data, columnNames);
-        table.setBounds(30,40,200,300);
+//        table.setBounds(30,40,200,300);
         JScrollPane tableScrollPane1 = new JScrollPane(table);
         frame.add(tableScrollPane1);
         frame.pack();
