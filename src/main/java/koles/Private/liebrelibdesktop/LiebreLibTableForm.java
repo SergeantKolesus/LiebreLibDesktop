@@ -37,7 +37,7 @@ public class LiebreLibTableForm {
 
     public void Show(ArrayList<Integer> lines, LiebreLib lib)
     {
-        frame = new JFrame();
+        frame = new JFrame("Dictionary");
 //        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ArrayList<String[]> linesContent = new ArrayList<String[]>();
         for(int line : lines)

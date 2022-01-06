@@ -160,7 +160,7 @@ public class LiebreLibMainForm {
 
     public void Show()
     {
-        frame = new JFrame("Test");
+        frame = new JFrame("Liebre Lib");
         frame.setContentPane(new LiebreLibMainForm().mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
